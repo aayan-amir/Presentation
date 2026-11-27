@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FrameworkAtlas from '../../exhibits/FrameworkAtlas.astro';
+import Survey from '../../exhibits/Survey.astro';
+import {chapters, frameworkLinks, presenterNotes, route, home} from '../../chapters';
+import {claims} from '../../chapter-claims';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '../../styles/lesson.css';
+import '../../styles/atlas.css';
+export function getStaticPaths(){
+  return chapters.map(chapter=>({params:{slug:chapter.slug},props:{chapter}}));
+}
+const {chapter}=Astro.props;
+const {index, slug}=chapter;
+const earlier=chapters[index-1], later=chapters[index+1];
+const notes=presenterNotes[index];
+const stages = {
+  'what-is-a-framework':'stack', languages:'languages', 'next-js':'next',
+  astro:'astro', 'remix-3':'remix', 'pick-a-stack':'choose',
+} as const;
+const kind=slug in stages ? stages[slug as keyof typeof stages] : undefined;
+---
+<Layout title={`${chapter.title} — Modern Web Dev Frameworks`} description={claims[slug]}>
+  <main class:list={['lesson',slug]} data-lesson={String(index)} data-slug={slug} data-prev={earlier&&route(earlier)} data-next={later&&route(later)}>
+    <header class="lesson-head">
+      <a href={home(chapter)}>← Terminal</a>
+      <span class="mono chapter-number">{String(index+1).padStart(2,'0')} / {String(chapters.length).padStart(2,'0')}</span>
+      <details class="jump-menu mono"><summary>Frameworks</summary><nav aria-label="Frameworks">{frameworkLinks.map(([name,href])=><a href={href}>{name}</a>)}</nav></details>
+    </header>
+    <div class="lesson-body">
+      <section class="lead">
+        <p class="mono eyebrow">{chapter.discipline}</p>
+        <h1>{chapter.title}</h1>
+        <p class="claim">{claims[slug]}</p>
+      </section>
+      {kind && <FrameworkAtlas kind={kind} />}
+      {slug==='languages' && <aside class="lesson-comparison"><strong>TypeScript, Python, JavaScript</strong><p>The three led GitHub by contributor count in its 2026 report. Rust roughly doubled over the prior year. <a href={notes.sources[0][1]}>GitHub Octoverse 2026 ↗</a></p></aside>}
+      {slug==='next-js' && <aside class="lesson-comparison"><strong>Where it fits</strong><p>Dashboards, account portals, and other React apps that need both server data and interactive screens. If most pages are articles or docs with a few widgets, <a href="/chapters/astro/">explore Astro</a>.</p></aside>}
+      {slug==='astro' && <aside class="lesson-comparison"><strong>Astro or Next.js?</strong><p>Astro starts with HTML and adds JavaScript to selected widgets. Next.js organizes a React app around Server and Client Components. Both can use JavaScript or TypeScript.</p></aside>}
+      {slug==='two-to-watch' && <section class="experiment watch-grid">
+        <article id="tanstack-start" class="watch-panel inventory">
+          <h2>TanStack Start</h2>
+          <p>Build full-stack apps with typed routes and search parameters. Change this mission filter and reopen the URL to see the same view.</p>
+          <form method="get" action="/chapters/two-to-watch/#tanstack-start" data-inventory>
+            <label for="mission-filter">Mission status</label>
+            <select id="mission-filter" name="status"><option value="all">All missions</option><option value="active">Active</option><option value="archived">Archived</option></select>
+            <button>Apply</button>
+          </form>
+          <ul class="inventory-list"><li data-mission="active">Aurora <span>Active</span></li><li data-mission="archived">Meridian <span>Archived</span></li></ul>
+          <a data-inventory-link href="/chapters/two-to-watch/#tanstack-start">Reopen this view ↗</a>
+        </article>
+        <article id="sveltekit" class="watch-panel svelte-panel" data-switch data-active="0">
+          <h2>SvelteKit</h2>
+          <p>Build sites and apps with Svelte components, file-based routing, and server-side or universal data loading.</p>
+          <div class="atlas-controls" hidden role="group" aria-label="SvelteKit route stages">
+            <button data-switch-button="0" aria-pressed="true">URL</button><button data-switch-button="1" aria-pressed="false">Load</button><button data-switch-button="2" aria-pressed="false">Page</button>
+          </div>
+          <div class="svelte-output" aria-live="polite">
+            <span data-copy="0">/missions/aurora → matches /missions/[id]</span>
+            <span data-copy="1">+page.server.ts → load mission data</span>
+            <span data-copy="2">+page.svelte → render the mission page</span>
+          </div>
+        </article>
+      </section>}
+      {slug==='usage-and-satisfaction' && <Survey />}
+      <details class="presenter">
+        <summary class="mono">Presenter notes · {chapter.seconds}s</summary>
+        {notes.script.map(line=><p>{line}</p>)}
+        {notes.sources.length>0&&<ul>{notes.sources.map(([title,link])=><li><a href={link}>{title}</a></li>)}</ul>}
+      </details>
+    </div>
+    <footer class="chapter-nav mono" aria-label="Chapter navigation">
+      {earlier?<a href={route(earlier)} rel="prev">← Previous</a>:<a href={home(chapter)}>← Terminal</a>}
+      {later?<a href={route(later)} rel="next">Next chapter →</a>:<a href={home(chapter)}>Back to terminal ↵</a>}
+    </footer>
+  </main>
+  <script>import '../../terminal/lesson';</script>
+</Layout>
+
+

@@ -1,0 +1,30 @@
+---
+import type {Project} from '../projects';
+import {asset} from '../projects';
+interface Props {project:Project; story:string[]}
+const {project,story} = Astro.props;
+const controls=['Sheet','Pleat','Fan'];
+---
+<section class="exhibit" aria-label={project.title}>
+  <div class="caption">
+    <h1>Matter<br/> Studies</h1>
+    <p class="mono plate" data-plate>PL. 03 / ACRYLIC</p>
+    <div class="crease-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  </div>
+  <div class="instrument">
+    <figure class="specimen">
+      <img class="primary-art" src={asset(project,project.entry)} alt="Vermilion acrylic folded into a fan" width="1100" height="840" fetchpriority="high" />
+    </figure>
+    <div class="selector" role="group" aria-label="Acrylic specimen">
+      <div class="tabs">{controls.map((control,index) => <button type="button" data-state={index+1} aria-pressed={project.entry===index+1}>{control}</button>)}</div>
+    </div>
+    <p class="reading" data-reading aria-live="polite">{story[project.entry-1]}</p>
+  </div>
+</section>
+<section class="notes">
+  <h2>From sheet to fan</h2>
+  <div class="proofs">{controls.map((control,index) => (
+    <figure><img src={asset(project,`${index+1}-small`)} alt={`${control} study`} width="520" height="397" loading="lazy" /><figcaption class="mono">{control}</figcaption></figure>
+  ))}</div>
+  <div class="detail"><img src={asset(project,3)} alt="Close view of the pleated acrylic edge" width="1100" height="840" loading="lazy" /><p>At the fold, one orange sheet gathers into a darker line.</p></div>
+</section>

@@ -1,0 +1,83 @@
+---
+import {languages} from '../languages';
+
+interface Props { kind: 'stack'|'languages'|'next'|'astro'|'remix'|'choose' }
+const {kind}=Astro.props;
+const scenes = {
+  stack: [
+    ['Web platform','HTML · CSS · JavaScript','HTML structures a page, CSS gives it a layout and appearance, and JavaScript adds behavior. These are the foundations browsers understand.'],
+    ['UI components','React · Svelte','Components package pieces of the interface, such as a map or navigation bar, so you can reuse them.'],
+    ['App framework','Astro · Next.js · SvelteKit','A framework gives the whole site a structure. It connects URLs to pages and gives you conventions for rendering, loading data, and deploying.'],
+  ],
+  languages: languages.map(lang=>[lang.name,lang.role,lang.copy]),
+  next: [
+    ['Server','Build the first view','App Router pages and layouts are Server Components by default. Put data access and read-only UI on this side, with access to server-only credentials.'],
+    ['Browser','Add interaction','Client Components handle state, events, and browser APIs. Next.js can pre-render their initial HTML, then hydrate them in the browser.'],
+    ['Together','A dashboard with two jobs','Render a report from server data and put a chart range selector in a Client Component. The selector can respond instantly to clicks.'],
+  ],
+  astro: [
+    ['Magazine','Publish articles and guides','Render the story and photos to HTML. Hydrate an optional audio player so readers can listen while the article stays plain HTML.'],
+    ['Docs','Wake up a search widget','A documentation site can serve its pages as HTML and hydrate a search widget with client:load.'],
+    ['Portfolio','Activate a gallery when it appears','Use client:visible on a gallery below the fold. Astro loads and hydrates that widget when it enters the viewport.'],
+  ],
+  remix: [
+    ['Request','Read the request','A request carries the URL, headers, and method. A route matches the URL and dispatches it to your application code.'],
+    ['Handler','Run the application logic','A handler can look up a resource, validate form data, or return a redirect.'],
+    ['Response','Send a response','Return HTML for a page or JSON for another client. Remix 3 is a framework built around web primitives and ships in beta.'],
+  ],
+  choose: [
+    ['Content site','Start with Astro','For documentation, publications, or portfolios with a few widgets, Astro can send HTML for the reading experience and hydrate selected components.'],
+    ['React app','Start with Next.js','For a React application with authenticated screens and data-backed UI, the App Router gives you server and client components in one route tree.'],
+    ['URL-driven app','Explore TanStack Start','If shareable filters and typed search parameters are central to your application, build a prototype around TanStack Router and Start.'],
+    ['Svelte app','Explore SvelteKit','If your team likes Svelte components, SvelteKit adds routes, data loading, and deployment tooling for the rest of the application.'],
+  ],
+} as const;
+const entries=scenes[kind];
+const initial=kind==='stack'?2:0;
+const label={stack:'Layers of the web stack',languages:'Programming languages',next:'Rendering boundaries',astro:'Site examples',remix:'Request lifecycle',choose:'Project types'}[kind];
+---
+<section class:list={['experiment','atlas',`atlas-${kind}`]} data-switch data-active={initial} aria-label={label}>
+  <div class="atlas-visual">
+    {kind==='stack' && <div class="layer-scene" aria-hidden="true">
+      <div class="layer-plane plane-platform"><span>01</span><b>Web<br/>platform</b><i></i></div>
+      <div class="layer-plane plane-ui"><span>02</span><b>UI<br/>components</b><i></i></div>
+      <div class="layer-plane plane-app"><span>03</span><b>App<br/>framework</b><i></i></div>
+    </div>}
+    {kind==='languages' && <div class="language-visual">
+      {languages.map((language,i)=><div class="language-frame" data-scene={i} hidden={i!==initial} style={`--signal:${language.color}`}>
+        <span class="language-mark" aria-hidden="true">{language.mark}</span>
+        <div><span class="mono">{language.now}</span><pre><code>{language.code}</code></pre></div>
+      </div>)}
+    </div>}
+    {kind==='next' && <div class="boundary" aria-hidden="true">
+      <div class="boundary-side boundary-server"><span>Server</span><div class="data-rack"><i></i><i></i><i></i></div><small>Fetch data · render</small></div>
+      <div class="boundary-wire"><i></i></div>
+      <div class="boundary-side boundary-client"><span>Browser</span><div class="chart-window"><i></i><i></i><i></i><i></i><i></i></div><small>State · events · browser APIs</small></div>
+    </div>}
+    {kind==='astro' && <div class="orbit-map" aria-hidden="true">
+      <div class="orbital-track"></div><div class="orbital-core"><span>HTML</span></div>
+      <div class="orbit-node orbit-a"><i></i><span>Audio player</span></div>
+      <div class="orbit-node orbit-b"><i></i><span>Search</span></div>
+      <div class="orbit-node orbit-c"><i></i><span>Gallery</span></div>
+    </div>}
+    {kind==='remix' && <div class="remix-track" aria-hidden="true">
+      <div><span>01</span><b>GET</b></div><div><span>02</span><b>Route</b></div><div><span>03</span><b>200 OK</b></div>
+    </div>}
+    {kind==='choose' && <div class="choice-map" aria-hidden="true">
+      <div class="choice-branches"></div><div class="choice-dial">Project<br/>brief</div>
+      <div class="choice-orbits"><span>Astro</span><span>Next.js</span><span>TanStack Start</span><span>SvelteKit</span></div>
+    </div>}
+  </div>
+  <div class="atlas-readout">
+    <div class="atlas-controls" hidden role="group" aria-label={label}>
+      {entries.map(([name],i)=><button type="button" data-switch-button={i} aria-pressed={i===initial?'true':'false'}>{name}</button>)}
+    </div>
+    <div class="atlas-copy" aria-live="polite">
+      {entries.map(([,title,copy],i)=><div data-copy={i}><h2>{title}</h2><p>{copy}</p>
+        {kind==='languages'&&<a href={languages[i].url}>Read the documentation ↗</a>}
+      </div>)}
+    </div>
+  </div>
+</section>
+
+

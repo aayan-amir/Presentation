@@ -1,0 +1,92 @@
+.what-is-a-framework{--surface:#e9ede5;--paper:#f3f5ee;--ink:#142b29;--muted:#405754;--line:#1f4a4234;--accent:#006758}
+.languages{--surface:#172044;--paper:#202d58;--ink:#f0f4ff;--muted:#cad6fb;--line:#b8c9ff4a;--accent:#adcaff}
+.astro{--surface:#f9e8da;--paper:#fff4e9;--ink:#351e38;--muted:#6d4a55;--line:#552d522d;--accent:#8a2f60;--display:"Barlow Condensed",sans-serif}
+.astro .lead h1{letter-spacing:-.025em}
+.pick-a-stack{--surface:#eaf1c8;--paper:#f6fadf;--ink:#263410;--muted:#4c5b36;--line:#42602644;--accent:#426026}
+.lesson-comparison{margin-top:18px;padding:14px 0;border-top:1px solid var(--line);display:flex;gap:clamp(12px,4vw,55px);align-items:baseline}
+.lesson-comparison strong{flex-shrink:0}
+.lesson-comparison p{max-width:68ch;line-height:1.45}
+.atlas{min-height:350px;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);border:1px solid var(--line);background:var(--paper)}
+.atlas-visual{display:grid;place-items:center;position:relative;overflow:hidden;min-width:0;min-height:320px;isolation:isolate}
+.atlas-readout{display:flex;flex-direction:column;justify-content:center;gap:23px;padding:clamp(16px,3vw,38px);border-left:1px solid var(--line)}
+.atlas-controls{display:flex;flex-wrap:wrap;gap:7px}
+.atlas-controls button{min-height:44px;border:1px solid var(--line);padding:7px 12px;background:transparent;color:inherit;font-weight:600;font-size:14px;cursor:pointer}
+.atlas-controls button:hover{border-color:var(--ink)}
+.atlas-controls button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.atlas-copy h2{font-size:clamp(25px,3.1vw,44px);line-height:1;letter-spacing:-.055em;margin:0 0 10px}
+.atlas-copy p{font-size:clamp(15px,1.4vw,19px);line-height:1.4;max-width:40ch}
+.atlas-copy a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}
+.atlas-copy [data-copy]+[data-copy]:not([hidden]){animation:atlas-in .28s ease-out both}
+@keyframes atlas-in{from{opacity:.5;transform:translateY(5px)}}
+.atlas-stack .atlas-visual{background:radial-gradient(ellipse at 52% 49%,#d0e1d1,transparent 65%),repeating-linear-gradient(90deg,#23625215 0 1px,transparent 1px 24px),repeating-linear-gradient(#23625215 0 1px,#e2eae0 1px 24px)}
+.layer-scene{position:relative;width:min(100%,550px);height:342px;perspective:860px;pointer-events:none}
+.layer-plane{position:absolute;inset:47% auto auto 50%;width:min(53vw,292px);height:130px;transform:translate(-50%,calc(-50% + var(--lift))) rotateX(53deg) rotateZ(-23deg) scale(var(--zoom,1));transform-origin:center;transition:transform .5s cubic-bezier(.17,.75,.25,1),filter .4s;display:grid;align-content:space-between;padding:12px 17px;color:var(--face-ink,#132722);background:linear-gradient(130deg,#ffffff32,transparent 56%),var(--face);border:1px solid #fff8;border-radius:8px;box-shadow:0 5px 0 var(--edge),0 11px 0 var(--edge),0 24px 32px #071e2944;filter:saturate(.55)}
+.layer-plane span{font:12px "IBM Plex Mono",monospace}
+.layer-plane b{font-size:28px;line-height:.91;letter-spacing:-.06em}
+.layer-plane i{position:absolute;right:17px;bottom:16px;width:28%;height:61%;background:repeating-linear-gradient(90deg,currentColor 0 1px,transparent 1px 10px),repeating-linear-gradient(currentColor 0 1px,transparent 1px 10px);opacity:.22}
+.plane-platform{--lift:77px;--face:#a5d7c5;--edge:#609a90}
+.plane-ui{--lift:0px;--face:#91bde1;--edge:#5a81a7}
+.plane-app{--lift:-77px;--face:#fbcc73;--edge:#bb8d43}
+[data-active="0"] .plane-platform,[data-active="1"] .plane-ui,[data-active="2"] .plane-app{--zoom:1.1;filter:saturate(1.5)}
+.atlas-languages{grid-template-columns:minmax(0,1.75fr) minmax(0,1fr)}
+.atlas-languages .atlas-visual{background:#101732}
+.language-visual{width:100%;height:100%}
+.language-frame{min-height:100%;display:grid;position:relative;align-items:end;padding:clamp(18px,4vw,45px);overflow:hidden;color:var(--signal);background:radial-gradient(ellipse at 45% 20%,color-mix(in srgb,var(--signal) 18%,#101732),#101732 76%)}
+.language-frame:not([hidden]){animation:atlas-in .32s ease-out}
+.language-mark{position:absolute;top:47%;left:50%;transform:translate(-53%,-55%);font:600 clamp(160px,23vw,320px)/.8 "Barlow Condensed",sans-serif;letter-spacing:-.07em;color:transparent;-webkit-text-stroke:1px var(--signal);text-shadow:5px 5px 50px color-mix(in srgb,var(--signal) 56%,transparent);opacity:.68}
+.language-frame div{z-index:1;min-width:0}
+.language-frame div span{display:inline-block;background:var(--signal);color:#101732;padding:5px 9px;font-size:11px;font-weight:600}
+.language-frame pre{margin:0;background:#101732e8;border:1px solid #cad6fb49;padding:12px 10px;font-size:clamp(11px,1.4vw,16px);white-space:pre-wrap;overflow-wrap:anywhere}
+.atlas-next .atlas-visual{background:linear-gradient(90deg,#101f2c 50%,#172d37 50%)}
+.boundary{width:100%;display:grid;grid-template-columns:1fr minmax(22px,.24fr) 1fr;align-items:center;padding:clamp(10px,3vw,38px);gap:0;color:#c0fff2}
+.boundary-side{text-align:center;display:grid;gap:14px;justify-items:center;opacity:.36;transition:opacity .3s,transform .3s}
+.boundary-side span{font:600 clamp(30px,4vw,55px)/1 "Barlow Condensed",sans-serif}
+.boundary-side small{font:clamp(8px,1.1vw,12px) "IBM Plex Mono",monospace}
+.data-rack,.chart-window{width:86%;max-width:170px;aspect-ratio:1.75;border:1px solid #aae6df77;padding:12px;display:flex;gap:5px;align-items:end;background:#152b36;box-shadow:0 11px 0 #07162060,0 18px 20px #0004;border-radius:3px}
+.data-rack{flex-direction:column;align-items:stretch}.data-rack i{flex:1;border:1px solid #73d7cb66;background:linear-gradient(90deg,#93ebd6 8%,#75bdb244 8%);border-radius:2px}
+.chart-window i{flex:1;background:linear-gradient(#a2f5e0,#1f6f6a);height:30%;transform-origin:bottom}
+.chart-window i:nth-child(2){height:50%}.chart-window i:nth-child(3){height:39%}.chart-window i:nth-child(4){height:78%}.chart-window i:nth-child(5){height:95%}
+.boundary-wire{height:1px;background:#5faaa4;opacity:.35;position:relative}
+.boundary-wire i{position:absolute;top:-3px;width:7px;height:7px;background:#c4fff5;border-radius:100%;box-shadow:0 0 14px #9cf7e2}
+.atlas-next[data-active="0"] .boundary-server,.atlas-next[data-active="1"] .boundary-client,.atlas-next[data-active="2"] .boundary-side{opacity:1;transform:translateY(-5px)}
+.atlas-next[data-active="2"] .boundary-wire{opacity:1}
+.atlas-next[data-active="2"] .boundary-wire i{animation:transfer 1.25s ease-in-out 2}
+@keyframes transfer{from{left:0}to{left:calc(100% - 7px)}}
+.atlas-astro .atlas-visual{background:#2c1635}
+.orbit-map{position:relative;width:100%;height:100%;min-height:327px;background:radial-gradient(circle at 50% 54%,#7f355b,transparent 50%),radial-gradient(circle,#ffe3bf72 1px,transparent 1.8px);background-size:auto,23px 23px}
+.orbital-track{position:absolute;inset:17% 9%;border-radius:50%;border:1px solid #ffb4a88c;transform:rotate(-16deg);box-shadow:0 0 0 16px #ffbd9b0c,0 0 0 36px #ffbd9b09}
+.orbital-core{position:absolute;inset:50% auto auto 49%;transform:translate(-50%,-50%);width:clamp(98px,15vw,160px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 34% 28%,#ffdaad,#ed8a70 44%,#7e3155 76%);box-shadow:0 0 55px #fa977967,inset 2px 3px 10px #ffe8ca;display:grid;place-items:center;color:#3f173a;font:600 clamp(28px,4vw,51px)/1 "Barlow Condensed",sans-serif}
+.orbit-node{position:absolute;transform:translate(-50%,-50%);display:grid;justify-items:center;gap:4px;color:#ffe5e7;font:clamp(10px,1.2vw,14px) "IBM Plex Mono",monospace;white-space:nowrap;text-shadow:0 1px 5px #200f28}
+.orbit-node i{width:19px;aspect-ratio:1;border-radius:50%;background:#a974a9;box-shadow:0 0 0 1px #f1bee584;transition:background .25s,box-shadow .25s,transform .25s}
+.orbit-a{left:20%;top:66%}.orbit-b{left:44%;top:21%}.orbit-c{left:80%;top:65%}
+[data-active="0"] .orbit-a i,[data-active="1"] .orbit-b i,[data-active="2"] .orbit-c i{background:#ffdc9d;box-shadow:0 0 0 5px #fcd09b3b,0 0 24px #ffac72;transform:scale(1.2)}
+.atlas-remix .atlas-visual{background:repeating-linear-gradient(120deg,#dcc2ff18 0 1px,transparent 1px 28px),#291c45}
+.remix-track{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:90%;transform:skewY(-10deg);color:#eee0ff}
+.remix-track>div{position:relative;border:1px solid #e4c6ff63;min-height:105px;padding:9px;display:grid;align-content:space-between;background:#382556;transition:transform .35s,background .35s,color .35s}
+.remix-track span{font:12px "IBM Plex Mono",monospace}.remix-track b{font:600 clamp(25px,5vw,65px)/.95 "Barlow Condensed",sans-serif}
+[data-active="0"] .remix-track>div:nth-child(1),[data-active="1"] .remix-track>div:nth-child(2),[data-active="2"] .remix-track>div:nth-child(3){transform:translateY(-17px);background:#ddd0f4;color:#22183a;box-shadow:0 13px 0 #8658c0}
+.atlas-choose .atlas-visual{background:repeating-radial-gradient(ellipse at 22% 50%,#24371019 0 1px,transparent 2px 15px),#dbe7ad}
+.choice-map{display:grid;grid-template-columns:1fr .45fr 1.25fr;align-items:center;width:90%;min-width:0;position:relative}
+.choice-dial{grid-area:1/1;justify-self:center;border:1px solid #536722;width:min(100%,135px);aspect-ratio:1;border-radius:50%;display:grid;place-content:center;text-align:center;background:#33471c;color:#f0ffbd;font-size:clamp(16px,3vw,30px);font-weight:600;line-height:1;box-shadow:0 0 0 6px #53672238;z-index:1}
+.choice-branches{position:absolute;width:52%;left:18%;height:1px;background:#536722}
+.choice-orbits{grid-area:1/3;display:grid;gap:8px;z-index:1}
+.choice-orbits span{padding:8px 11px;border:1px solid #819052;background:#e8f1ba;font-weight:600;font-size:clamp(12px,2vw,20px);transition:transform .34s}
+[data-active="0"] .choice-orbits span:nth-child(1),[data-active="1"] .choice-orbits span:nth-child(2),[data-active="2"] .choice-orbits span:nth-child(3),[data-active="3"] .choice-orbits span:nth-child(4){transform:translateX(-10px);background:#33471c;color:#f0ffbd}
+.atlas [hidden],.watch-panel [hidden]{display:none}
+.atlas:has(.atlas-controls[hidden]) .atlas-copy>div+div{margin-top:18px}
+.svelte-output>span:not([hidden]){display:block}
+@media(max-width:760px){
+  .atlas,.atlas-languages{grid-template-columns:minmax(0,1fr)}
+  .atlas-visual,.orbit-map{min-height:237px}
+  .atlas-readout{border-left:0;border-top:1px solid var(--line);gap:15px}
+  .lesson-comparison{display:grid;gap:5px}
+  .layer-scene{height:246px}
+  .layer-plane{height:110px}.layer-plane b{font-size:22px}
+  .plane-platform{--lift:55px}.plane-app{--lift:-55px}
+  .orbit-node i{width:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .atlas *{animation:none!important;transition:none!important}
+}
+
+

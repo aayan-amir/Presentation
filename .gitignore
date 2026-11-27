@@ -1,0 +1,10 @@
+node_modules/
+.astro/
+dist/
+test-results/
+playwright-report/
+.npm-cache/
+.model-tools/
+.test-browsers/
+review/
+art/*.blend1

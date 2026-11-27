@@ -1,0 +1,21 @@
+{
+  "name": "Index Works — Archive edition",
+  "id": "1645348756660204831",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "artwork.html",
+  "menu": [
+    {"name":"Create or open interactive edition","command":"build"},
+    {"name":"Retire legacy screens after playback review","command":"retire"},
+    {"name":"Restore legacy screens","command":"restore"}
+  ],
+  "editorType": [
+    "figma"
+  ],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {
+    "allowedDomains": [
+      "none"
+    ]
+  }
+}

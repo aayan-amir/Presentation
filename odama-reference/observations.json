@@ -1,0 +1,12 @@
+{
+  "desktop": {
+    "stage": false,
+    "ready": false,
+    "initial": null
+  },
+  "mobile": {
+    "stage": true,
+    "nextControlVisible": true,
+    "initial": "Showing project: Mimikry. Use the arrow keys to change project and Enter to see the work, or F to watch the show reel."
+  }
+}

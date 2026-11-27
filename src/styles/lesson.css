@@ -1,0 +1,56 @@
+.lesson{--surface:#f3ecdd;--paper:#faf5e9;--ink:#282b2a;--muted:#57564e;--line:#2b2a262f;--accent:#a4442f;--display:"Space Grotesk Variable",sans-serif;background:var(--surface);color:var(--ink);min-height:100svh;padding-bottom:76px}
+.lesson *{scroll-margin-top:20px}
+.lesson-head,.chapter-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(18px,4vw,65px);font-size:13px}
+.lesson-head{min-height:69px;border-bottom:1px solid var(--line);position:relative;z-index:3}
+.lesson-head a,.chapter-nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.lesson-head a:hover,.chapter-nav a:hover{text-decoration:underline;text-underline-offset:4px}
+.chapter-number{position:absolute;left:50%;transform:translateX(-50%)}
+.jump-menu{position:relative}
+.jump-menu summary{min-height:44px;align-content:center;cursor:pointer}
+.jump-menu nav{position:absolute;right:0;top:100%;min-width:176px;display:grid;background:var(--paper);border:1px solid var(--line);padding:5px 12px}
+.chapter-nav{position:fixed;z-index:5;bottom:0;left:0;right:0;min-height:61px;background:var(--surface);border-top:1px solid var(--line)}
+.lesson-body{width:min(1360px,100% - clamp(36px,8vw,130px));margin-inline:auto;padding-block:32px 55px}
+.lead{display:grid;gap:12px;margin-bottom:25px}
+.eyebrow{font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:var(--muted)}
+.lead h1{font:600 clamp(49px,7.8vw,114px)/.88 var(--display);letter-spacing:-.075em;max-width:18ch}
+.claim{max-width:43ch;font-size:clamp(17px,2.1vw,27px);line-height:1.18}
+.experiment{position:relative}
+.presenter{border-top:1px solid var(--line);margin-top:18px}
+.presenter summary{padding:12px 0;min-height:44px;cursor:pointer}
+.presenter p{line-height:1.5;max-width:72ch;margin:0 0 12px}
+.presenter small{color:var(--muted)}
+.watch-panel button,.watch-panel select,.survey-controls button{min-height:44px;border:1px solid var(--line);background:var(--paper);text-align:left;padding:6px 12px;color:var(--ink)}
+.survey-controls button[aria-pressed=true]{outline:1px solid var(--accent);background:color-mix(in srgb,var(--accent) 19%,var(--paper));outline-offset:-2px}
+.next-js{--surface:#0e1922;--paper:#172934;--ink:#e8faf7;--muted:#b0c9cb;--line:#9bb8bf3d;--accent:#8ce7d3;--display:"Barlow Condensed",sans-serif}
+.next-js .lead h1{letter-spacing:-.018em}
+.remix-3{--surface:#22192f;--paper:#322342;--ink:#fbf0ff;--muted:#d7bbec;--line:#d6a9fa47;--accent:#dca7ff;--display:"Barlow Condensed",sans-serif}
+.remix-3 .lead h1{letter-spacing:-.024em}
+.two-to-watch{--surface:#f2e6d8;--paper:#fbf3e9;--accent:#913f30}
+.watch-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.watch-panel{border:1px solid var(--line);padding:clamp(17px,3vw,35px);display:grid;align-content:start;gap:13px;background:var(--paper)}
+.watch-panel h2{font-size:clamp(30px,4vw,55px);line-height:.94;letter-spacing:-.07em}
+.watch-panel p{line-height:1.34}
+.watch-panel form{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.watch-panel form label{width:100%;font-size:12px}
+.inventory-list{list-style:none;padding:0;margin:0}.inventory-list li{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:9px 0}
+.svelte-panel{--ink:#fff0dc;--paper:#362720;--muted:#ffe0b2;--line:#ffe0b26b;color:var(--ink)}
+.svelte-output{font:13px "IBM Plex Mono",monospace;background:#211815;padding:18px 12px;border-left:2px solid #ef9149}
+.usage-and-satisfaction{--surface:#e9edf1;--paper:#f6f9fc;--ink:#1b2b3d;--accent:#375f93}
+.survey{border:1px solid var(--line);padding:clamp(16px,3vw,36px);background:var(--paper)}
+.survey-controls{display:flex;gap:8px;margin:12px 0}.survey [data-chart]{margin-top:16px}
+.survey table{width:100%;border-collapse:collapse;margin-top:18px}.survey :is(th,td){text-align:left;border-top:1px solid var(--line);padding:8px}
+.survey .row{display:grid;grid-template-columns:96px 1fr 42px;gap:9px;align-items:center;margin:8px 0;font:12px "IBM Plex Mono",monospace}
+.survey .row i{height:11px;background:linear-gradient(90deg,var(--accent) var(--rate),#cdd7e3 var(--rate))}
+.survey-scale{display:flex;justify-content:space-between;margin:12px 51px 0 105px;font-size:10px;color:var(--muted)}
+[data-arrival] .experiment{animation:chapter-arrival .42s cubic-bezier(.15,.65,.3,1) both}
+.next-js[data-arrival] .experiment{animation-name:dispatch-arrival}
+.remix-3[data-arrival] .experiment{animation-name:frame-arrival}
+@keyframes chapter-arrival{from{opacity:.25;transform:translateY(10px)}}
+@keyframes dispatch-arrival{from{opacity:.4;clip-path:inset(0 0 55% 0)}to{clip-path:inset(0)}}
+@keyframes frame-arrival{from{opacity:.3;transform:scale(.96)}}
+@media(max-width:650px){
+ .lesson-body{padding-top:23px}
+ .lead h1{font-size:clamp(42px,12vw,68px)}
+ .watch-grid{grid-template-columns:1fr}
+}
+

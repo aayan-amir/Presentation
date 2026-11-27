@@ -1,0 +1,115 @@
+[
+  {
+    "script": [
+      "When people say framework, they mean a set of tools and conventions for building a site or app. A framework helps with the jobs every app has in common, including deciding which page a URL opens and where it renders.",
+      "Work from the bottom of the diagram. HTML, CSS, and JavaScript are the browser's platform. A component model puts reusable pieces on top. A web framework coordinates those pieces across pages and the server."
+    ],
+    "sources": [
+      [
+        "MDN web platform guides",
+        "https://developer.mozilla.org/en-US/docs/Learn_web_development"
+      ],
+      [
+        "Astro overview",
+        "https://docs.astro.build/en/concepts/why-astro/"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "Learn JavaScript to understand browser behavior. Add TypeScript as the app grows so its interfaces and data shapes can be checked before runtime.",
+      "Python is a practical companion for AI and data services. Go fits network services where a compiled deployment helps. Rust plus WebAssembly is worth watching for compute-heavy browser features. WebAssembly is a compilation target. JavaScript can still handle the interface.",
+      "GitHub's 2026 Octoverse kept TypeScript, Python and JavaScript in the first three positions by contributor counts. Rust roughly doubled year over year in the same report. GitHub activity is one signal, and the language choice still depends on the job."
+    ],
+    "sources": [
+      [
+        "GitHub Octoverse 2026",
+        "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/"
+      ],
+      [
+        "TypeScript Handbook",
+        "https://www.typescriptlang.org/docs/"
+      ],
+      [
+        "MDN WebAssembly",
+        "https://developer.mozilla.org/en-US/docs/WebAssembly"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "Imagine a dashboard. The server can query its data and render the first report. The browser handles a range picker once it has loaded the relevant client code.",
+      "Next.js and Astro both render on the server. Next.js organizes this around React Server and Client Components in the App Router. Astro defaults to HTML and hydrates only the UI islands chosen by the author."
+    ],
+    "sources": [
+      [
+        "Next.js server and client components",
+        "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "Think of a magazine issue, a docs site, or a portfolio. Most of the page is content. Astro renders that content to HTML and lets specific components load JavaScript when needed.",
+      "Switch from Magazine to Docs and then Portfolio to highlight different widgets. These are illustrations of independent Astro islands. Show that client:load starts the widget eagerly and client:visible starts when it comes into view.",
+      "Astro and Next.js are frameworks. JavaScript and TypeScript are languages you can use in either. Astro can host UI components from React and other integrations."
+    ],
+    "sources": [
+      [
+        "Astro islands architecture",
+        "https://docs.astro.build/en/concepts/islands/"
+      ],
+      [
+        "Astro client directives",
+        "https://docs.astro.build/en/reference/directives-reference/#client-directives"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "Follow a request through the route handler to its response. Remix 3 is a distinct architecture that leans on standard HTTP and web APIs, including Request and Response.",
+      "The flow here illustrates the idea. Check the official beta notes before choosing Remix 3 for a live project."
+    ],
+    "sources": [
+      [
+        "Remix 3 beta preview",
+        "https://remix.run/blog/remix-3-beta-preview"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "TanStack Start combines routing and server capabilities. Change the filter and reopen the URL to show how search parameters preserve the view.",
+      "SvelteKit is the application framework around Svelte. Use the SvelteKit route strip to trace a project URL to the data loader and page."
+    ],
+    "sources": [
+      [
+        "TanStack Start overview",
+        "https://tanstack.com/start/latest/docs/framework/react/overview"
+      ],
+      [
+        "SvelteKit introduction",
+        "https://svelte.dev/docs/kit/introduction"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "These percentages are from the 2025 State of JavaScript survey. Usage includes respondents who have used the framework. Satisfaction means the share of its users who would use it again.",
+      "Compare Next.js with Astro on both measures. The responses can tell you what this audience has tried and values. Use those results alongside your project requirements."
+    ],
+    "sources": [
+      [
+        "State of JavaScript 2025",
+        "https://2025.stateofjs.com/en-US/libraries/meta-frameworks/"
+      ]
+    ]
+  },
+  {
+    "script": [
+      "Pick a project brief. Ask where its data lives, how much of the screen needs interaction, and what the team wants to maintain.",
+      "A portfolio and an authenticated dashboard can share a language while benefiting from different framework decisions."
+    ],
+    "sources": []
+  }
+]

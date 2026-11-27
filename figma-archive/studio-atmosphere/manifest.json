@@ -1,0 +1,10 @@
+{
+  "name": "Index Works — Studio atmosphere",
+  "id": "1645348756660204832",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "assets.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "networkAccess": {"allowedDomains": ["none"]}
+}

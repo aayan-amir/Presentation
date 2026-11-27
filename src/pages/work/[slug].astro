@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {projects, home, route} from '../../projects';
+import SignalField from '../../exhibits/SignalField.astro';
+import MatterStudies from '../../exhibits/MatterStudies.astro';
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/cormorant-garamond/latin-500-italic.css';
+import '../../styles/work.css';
+export function getStaticPaths() {
+  return projects.map(project => ({params: {slug: project.slug}, props: {project}}));
+}
+const {project} = Astro.props;
+const optical = project.exhibit === 'tuning-chamber';
+const Exhibit = optical ? SignalField : MatterStudies;
+const other = projects.find(p => p.slug !== project.slug);
+const story = optical ? [
+  'The light traces the outside of the first turn.',
+  'A single strip of light breaks into separate arcs as the polished tube turns away.',
+  'From the east, the highlights travel down the inside edge.'
+] : [
+  'The register mark sits on the edge of the flat sheet.',
+  'The same mark follows the ridge as the alternating folds take shape.',
+  'Every pleat turns about one pivot. The outer edge opens into a fan.'
+];
+---
+<Layout title={`${project.title} — Index Works`} description={story[project.entry-1]}>
+  <main class:list={['work',optical ? 'signal' : 'matter']} data-work={project.slug} data-exhibit={project.exhibit} data-start={project.entry} data-captions={JSON.stringify(story)}>
+    <header class="work-mast"><a class="signature" href="/">Index Works</a><a class="mono back" href={home(project)}>← Back to terminal</a></header>
+    <Exhibit project={project} story={story} />
+    <footer class="work-footer mono"><a href={home(project)}>← Back to terminal</a>{other && <a href={route(other)}>{other.title} →</a>}</footer>
+  </main>
+  <script>import '../../terminal/exhibit';</script>
+</Layout>

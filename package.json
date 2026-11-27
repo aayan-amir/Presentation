@@ -1,0 +1,27 @@
+{
+  "name": "index-works",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@fontsource-variable/space-grotesk": "^5.2.0",
+    "@fontsource/barlow-condensed": "^5.2.0",
+    "@fontsource/cormorant-garamond": "^5.2.0",
+    "@fontsource/ibm-plex-mono": "^5.2.0",
+    "astro": "^6.0.0",
+    "three": "^0.183.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.0",
+    "@playwright/test": "^1.58.0",
+    "@types/three": "^0.183.0",
+    "gltf-validator": "^2.0.0-dev.3.10",
+    "typescript": "^5.9.0"
+  }
+}

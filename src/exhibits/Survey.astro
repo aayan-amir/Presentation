@@ -1,0 +1,26 @@
+---
+import survey from '../survey.json';
+const measures=[
+  {key:'usage',title:'Usage',description:'Share of respondents who have used the framework.'},
+  {key:'satisfaction',title:'Satisfaction',description:'Share of people who used the framework and would use it again.'},
+] as const;
+---
+<section class="experiment survey" data-survey>
+  <p class="mono eyebrow">State of JavaScript {survey.year} · Selected meta-frameworks</p>
+  <div class="survey-controls" role="group" aria-label="Survey measure">
+    {measures.map((metric,index)=><button data-metric={metric.key} aria-pressed={index===0}>{metric.title}</button>)}
+  </div>
+  {measures.map((metric,index)=><div data-chart={metric.key} hidden={index!==0}>
+    <p>{metric.description}</p>
+    <div class="survey-scale mono" aria-hidden="true"><span>0%</span><span>50%</span><span>100%</span></div>
+    {survey.rows.map(row=><div class="row"><b>{row.name}</b><i style={`--rate:${row[metric.key]}%`} aria-hidden="true"></i><span>{row[metric.key]}%</span></div>)}
+  </div>)}
+  <p class="experiment-note">The {survey.year} survey received {survey.totalRespondents.toLocaleString('en-US')} responses overall. The two measures describe different groups.</p>
+  <details>
+    <summary>View data table</summary>
+    <table><thead><tr><th scope="col">Framework</th><th scope="col">Usage</th><th scope="col">Satisfaction</th></tr></thead>
+      <tbody>{survey.rows.map(row=><tr><th scope="row">{row.name}</th><td>{row.usage}%</td><td>{row.satisfaction}%</td></tr>)}</tbody>
+    </table>
+  </details>
+  <p class="experiment-note"><a href={survey.source}>Published survey results ↗</a></p>
+</section>

@@ -1,0 +1,80 @@
+.work{min-height:100svh;isolation:isolate}
+.work-mast,.work-footer{display:flex;justify-content:space-between;align-items:center;padding:19px 3.2vw}
+.work-mast a,.work-footer a{text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.work-mast a:hover,.work-footer a:hover{text-decoration:underline;text-underline-offset:5px}
+.work-mast .back,.work-footer{font-size:12px}
+.exhibit{min-height:calc(100svh - 82px);padding:25px 3.2vw 56px;display:grid;align-items:start;gap:18px}
+.specimen{position:relative;overflow:hidden;isolation:isolate}
+.specimen img{width:100%;height:100%;object-fit:cover}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr)}
+.tabs button{min-height:49px;text-align:left}
+.notes{padding:48px 3.2vw 72px;border-top:1px solid currentColor}
+.notes h2{margin-bottom:36px}
+.proofs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.proofs img{width:100%;object-fit:cover;aspect-ratio:2.05;height:auto}
+.proofs figcaption{padding-top:10px;font-size:12px}
+.work-footer{border-top:1px solid currentColor}
+.signal{background:#091216;color:#e0f0f1;--accent:#9de3e7}
+.signal .exhibit{grid-template-columns:1.1fr 3.9fr .37fr}
+.signal .caption{padding-top:6vh;position:relative;z-index:1}
+.signal h1,.signal h2,.signal .control-title{font:600 clamp(66px,8vw,146px)/.79 "Barlow Condensed",sans-serif;text-transform:uppercase;letter-spacing:-.014em}
+.signal h2{font-size:clamp(45px,6vw,85px)}
+.signal .instrument{min-width:0}
+.signal .specimen{height:min(61vh,660px);min-height:320px;background:#0b151a}
+.signal .specimen img{object-fit:contain}
+.signal .scale{margin-top:19%;width:auto;align-self:center;display:grid;gap:10px;color:var(--accent);justify-items:end}
+.signal .scale i{height:240px;width:19px;background:repeating-linear-gradient(180deg,#648487 0 1px,transparent 1px 20px)}
+.signal .scale span{font-size:clamp(16px,2.2vw,34px)}
+.signal .selector{padding-top:20px}
+.signal .control-title{font-size:26px;text-transform:none;margin-bottom:16px}
+.signal .tabs button{color:#a2babd;background:transparent;border:0;border-top:1px solid #648487;font:12px "IBM Plex Mono",monospace;padding:0;position:relative}
+.signal .tabs button::before{content:"";position:absolute;top:-6px;left:0;width:1px;height:11px;background:#648487}
+.signal .tabs button[aria-pressed=true]{color:#e0f0f1}
+.signal .tabs button[aria-pressed=true]::before{width:8px;border-radius:2px;background:var(--accent)}
+.signal .proofs img{object-fit:none;object-position:50% 56%}
+.observation{font-size:clamp(21px,3vw,39px);max-width:22ch;margin-top:45px;padding-left:20px;border-left:1px solid var(--accent)}
+.matter{background:#f3ebd9;color:#713323}
+.matter .work-mast{border-bottom:1px solid #71332325}
+.matter .exhibit{grid-template-columns:42fr 58fr;gap:0}
+.matter .caption{padding-top:9vh;position:relative;min-height:min(76vh,715px);background:linear-gradient(90deg,transparent 95%,#8d6d4322 99.6%,#74573938);padding-right:20px}
+.matter h1,.matter h2,.matter .detail p{font:500 italic clamp(66px,9vw,150px)/.76 "Cormorant Garamond",serif;letter-spacing:-.063em}
+.matter .plate{font-size:11px;margin-top:26px;color:#973b22}
+.matter .instrument{padding-left:17px}
+.matter .specimen{height:min(60vh,620px);min-height:330px;background:#e4d5b4;perspective:1300px}
+.matter .specimen img{transform-origin:0 50%;backface-visibility:hidden}
+.matter .selector{padding-top:15px}
+.matter .tabs{gap:6px}
+.matter .tabs button{border:0;background:#e9ddc1;color:inherit;padding:4px 13px;border-radius:3px 3px 0 0;font:500 italic clamp(20px,3vw,33px) "Cormorant Garamond",serif}
+.matter .tabs button[aria-pressed=true]{background:#743725;color:#fff4de}
+.matter .reading{font:500 italic clamp(20px,2.4vw,31px)/1.1 "Cormorant Garamond",serif;margin-top:19px;max-width:30ch}
+.crease-lines{position:absolute;right:0;top:57%;width:23%;height:30px}
+.crease-lines i{display:block;width:100%;height:1px;position:absolute;right:0;background:#a76447;transform-origin:right}
+.crease-lines i:nth-child(2){transform:rotate(8deg)}.crease-lines i:nth-child(3){transform:rotate(16deg)}.crease-lines i:nth-child(4){transform:rotate(24deg)}
+.matter h2{font-size:clamp(47px,7vw,102px)}
+.detail{display:grid;grid-template-columns:2fr 1fr;gap:30px;margin-top:45px;align-items:center}
+.detail img{width:100%;height:min(39vw,370px);object-fit:cover;object-position:center 63%}
+.matter .detail p{font-size:clamp(25px,4.3vw,66px);line-height:.95}
+.work[data-arrival] .specimen{animation:chamber-in .42s ease-out both}
+.matter[data-arrival] .specimen{animation:leaf-in .54s cubic-bezier(.2,.7,.3,1) both}
+@keyframes chamber-in{from{opacity:.55;clip-path:ellipse(22% 30% at 49% 50%)}to{opacity:1;clip-path:ellipse(105% 112% at 49% 50%)}}
+@keyframes leaf-in{from{clip-path:inset(0 95% 0 0);opacity:.7}to{clip-path:inset(0);opacity:1}}
+@media(max-width:700px){
+ .work-mast,.work-footer{padding:10px 18px}
+ .exhibit{display:block!important;padding:33px 18px 55px;position:relative}
+ .signal .caption,.matter .caption{padding:0;min-height:auto;background:none}
+ .signal h1{font-size:65px}
+ .signal .specimen,.matter .specimen{height:clamp(290px,43vh,430px);min-height:0;margin:19px -18px 0}
+ .signal .scale{position:absolute;right:21px;top:31%;margin:0}
+ .signal .scale i{height:100px;width:12px}
+ .matter h1 br{display:none}
+ .matter h1{font-size:clamp(46px,13vw,79px);line-height:1}
+ .matter .plate{margin-top:7px}
+ .matter .instrument{padding:0}
+ .matter .crease-lines{display:none}
+ .signal .proofs{grid-template-columns:1fr}
+ .matter .proofs{gap:7px}
+ .proofs img{aspect-ratio:1.35}
+ .notes{padding:36px 18px 54px}
+ .detail{grid-template-columns:1fr;gap:14px}
+ .detail img{height:55vw}
+}

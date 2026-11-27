@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {chapters as projects, frameworkLinks, asset, route} from '../chapters';
+import '../styles/home.css';
+const first = projects[0];
+---
+<Layout title="Modern Web Dev Frameworks" description="An interactive guide to modern web frameworks and languages.">
+  <main class="archive" data-archive data-atmosphere={first.atmosphere}>
+    <div class="studio" aria-hidden="true">
+      <div class="room room--cool"></div><div class="room room--warm"></div>
+      <div class="refractions refractions--cool"><i></i><i></i><i></i></div>
+      <div class="refractions refractions--warm"><i></i><i></i><i></i></div>
+      <div class="shadow"></div>
+    </div>
+    <header class="mast">
+      <a class="signature" href="/">Modern Web Dev Frameworks<span></span></a>
+      <details class="framework-menu mono"><summary>Frameworks</summary><nav aria-label="Frameworks">
+        {frameworkLinks.map(([name,href])=><a href={href}>{name}</a>)}
+      </nav></details>
+    </header>
+    <section class="stage" aria-label="Archive terminal" tabindex="0">
+      <div class="machine">
+        <img class="poster" src={asset(first,'poster')} width="800" height="800" alt="" fetchpriority="high" decoding="sync" />
+        <div class="viewport" aria-hidden="true"></div>
+        <div class="keys" hidden>
+          <button data-key="left" aria-label="Previous chapter"><span>←</span></button>
+          <a data-key="open" href={route(first)} aria-label="Open selected chapter"><span>↵</span></a>
+          <button data-key="right" aria-label="Next chapter"><span>→</span></button>
+        </div>
+      </div>
+    </section>
+    <div class="catalogue" aria-live="polite" aria-atomic="true">
+      <p class="discipline mono" data-discipline>{first.discipline}</p>
+      <h1 data-title>{first.title}</h1>
+      <p class="count mono" data-count>01 / 08</p>
+    </div>
+    <p class="lesson-question">What would you build with each one?</p>
+    <footer class="controls mono">
+      <details class="chapter-index mono"><summary>All chapters</summary><nav aria-label="Chapters">{projects.map(project => <a href={route(project)}>{String(project.index+1).padStart(2,'0')} · {project.title}</a>)}</nav></details>
+      <nav aria-label="Start lesson" class="project-links"><a href={route(first)}>Start chapter 01 →</a></nav>
+      <div class="actions" hidden>
+        <nav class="keyboard" aria-label="Terminal actions">
+          <button data-command="left" aria-label="Previous chapter">←</button>
+          <button data-command="right" aria-label="Next chapter">→</button>
+          <a data-command="open" href={route(first)} aria-label="Open chapter">↵ <span>Open chapter</span></a>
+        </nav>
+        <button class="orbit" data-orbit disabled>↻ <span>Orbit PC</span></button>
+        <button class="motion" data-motion aria-pressed="false">Pause motion</button>
+      </div>
+    </footer>
+    <div class="entry" aria-hidden="true"><img alt="" /></div>
+  </main>
+  <script>import '../terminal/controller';</script>
+</Layout>
+

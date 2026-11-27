@@ -1,0 +1,33 @@
+{
+  "year": 2025,
+  "totalRespondents": 13002,
+  "source": "https://2025.stateofjs.com/en-US/libraries/meta-frameworks/#meta_frameworks_ratios",
+  "dataSource": "https://2025.stateofjs.com/page-data/en-US/libraries/meta-frameworks/page-data.json",
+  "rows": [
+    {
+      "name": "Next.js",
+      "usage": 59,
+      "satisfaction": 55
+    },
+    {
+      "name": "Astro",
+      "usage": 27,
+      "satisfaction": 94
+    },
+    {
+      "name": "SvelteKit",
+      "usage": 17,
+      "satisfaction": 88
+    },
+    {
+      "name": "Remix",
+      "usage": 14,
+      "satisfaction": 68
+    },
+    {
+      "name": "Nuxt",
+      "usage": 23,
+      "satisfaction": 80
+    }
+  ]
+}
